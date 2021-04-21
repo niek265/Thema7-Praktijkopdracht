@@ -1,58 +1,21 @@
 ---
-title: "R Notebook"
+title: "Analysis of Gene Expression"
+subtitle: "Transcriptional signature of prion-induced neurotoxicity in a Drosophila model of transmissible mammalian prion disease"
 author: Niek Scholten
 date: 11-03-21
 output: pdf_document
 ---
 
-```{r echo = T, results = 'hide'}
-ElavX51D_5_NBH_1 <- read.table("Data/ElavX51D_5_NBH_1.txt")
-ElavX51D_5_NBH_2 <- read.table("Data/ElavX51D_5_NBH_2.txt")
-ElavX51D_5_NBH_3 <- read.table("Data/ElavX51D_5_NBH_3.txt")
+```{r read-data, echo = T, results = 'hide'}
+data <- read.table("Data/GSE144028.txt")
+```
 
-ElavX51D_5_S_1 <- read.table("Data/ElavX51D_5_S_1.txt")
-ElavX51D_5_S_2 <- read.table("Data/ElavX51D_5_S_2.txt")
-ElavX51D_5_S_3 <- read.table("Data/ElavX51D_5_S_3.txt")
+```{r boxplot}
+summary(data)
+boxplot((data), outline = FALSE, col = 'green')
 
-ElavX51D_30_NBH_1 <- read.table("Data/ElavX51D_30_NBH_1.txt")
-ElavX51D_30_NBH_2 <- read.table("Data/ElavX51D_30_NBH_2.txt")
-ElavX51D_30_NBH_3 <- read.table("Data/ElavX51D_30_NBH_3.txt")
+```
 
-ElavX51D_30_S_1 <- read.table("Data/ElavX51D_30_S_1.txt")
-ElavX51D_30_S_2 <- read.table("Data/ElavX51D_30_S_2.txt")
-ElavX51D_30_S_3 <- read.table("Data/ElavX51D_30_S_3.txt")
-
-ElavXPrPCyt_5_NBH_1 <- read.table("Data/ElavXPrPCyt_5_NBH_1.txt")
-ElavXPrPCyt_5_NBH_2 <- read.table("Data/ElavXPrPCyt_5_NBH_2.txt")
-ElavXPrPCyt_5_NBH_3 <- read.table("Data/ElavXPrPCyt_5_NBH_3.txt")
-
-ElavXPrPCyt_5_S_1 <- read.table("Data/ElavXPrPCyt_5_S_1.txt")
-ElavXPrPCyt_5_S_2 <- read.table("Data/ElavXPrPCyt_5_S_2.txt")
-ElavXPrPCyt_5_S_3 <- read.table("Data/ElavXPrPCyt_5_S_3.txt")
-
-ElavXPrPCyt_30_NBH_1 <- read.table("Data/ElavXPrPCyt_30_NBH_1.txt")
-ElavXPrPCyt_30_NBH_2 <- read.table("Data/ElavXPrPCyt_30_NBH_2.txt")
-ElavXPrPCyt_30_NBH_3 <- read.table("Data/ElavXPrPCyt_30_NBH_3.txt")
-
-ElavXPrPCyt_30_S_1 <- read.table("Data/ElavXPrPCyt_30_S_1.txt")
-ElavXPrPCyt_30_S_2 <- read.table("Data/ElavXPrPCyt_30_S_2.txt")
-ElavXPrPCyt_30_S_3 <- read.table("Data/ElavXPrPCyt_30_S_3.txt")
-
-ElavXPrPGPI_5_NBH_1 <- read.table("Data/ElavXPrPGPI_5_NBH_1.txt")
-ElavXPrPGPI_5_NBH_2 <- read.table("Data/ElavXPrPGPI_5_NBH_2.txt")
-ElavXPrPGPI_5_NBH_3 <- read.table("Data/ElavXPrPGPI_5_NBH_3.txt")
-
-ElavXPrPGPI_5_S_1 <- read.table("Data/ElavXPrPGPI_5_S_1.txt")
-ElavXPrPGPI_5_S_2 <- read.table("Data/ElavXPrPGPI_5_S_2.txt")
-ElavXPrPGPI_5_S_3 <- read.table("Data/ElavXPrPGPI_5_S_3.txt")
-
-ElavXPrPGPI_40_NBH_1 <- read.table("Data/ElavXPrPGPI_40_NBH_1.txt")
-ElavXPrPGPI_40_NBH_2 <- read.table("Data/ElavXPrPGPI_40_NBH_2.txt")
-ElavXPrPGPI_40_NBH_3 <- read.table("Data/ElavXPrPGPI_40_NBH_3.txt")
-
-ElavXPrPGPI_40_S_1 <- read.table("Data/ElavXPrPGPI_40_S_1.txt")
-ElavXPrPGPI_40_S_2 <- read.table("Data/ElavXPrPGPI_40_S_2.txt")
-ElavXPrPGPI_40_S_3 <- read.table("Data/ElavXPrPGPI_40_S_3.txt")
-
+```{r}
 
 ```
