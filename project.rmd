@@ -5,6 +5,20 @@ author: Niek Scholten
 date: "`r Sys.Date()`"
 output: pdf_document
 ---
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\begin{center}
+    \includegraphics[width=5in,height=5in]{drosophila.jpg}\LARGE\\
+\end{center}
+\newpage
 
 ```{r setup, echo = T, results = 'hide', message = F, warning = F}
 # Options for all chunks
@@ -40,17 +54,22 @@ groups <- factor(rep(1:12, each=3),
 # Set color distributions for the graphs
 colors12 <- hue_pal()(12)
 colors36 <- rep(colors12, each=3)
+#
+#
+#
 ```
+This is the setup of the project. It loads all the necessary packages and sets values that are important for later.
 
-```{r boxplot}
-pander::pander(summary(data), split.tables = 64)
-boxplot(data,
+```{r boxplot, fig.width = 10, fig.height = 8}
+panderOptions('table.continues', '')
+pander(summary(data), split.tables = 64)
+boxplot(log2(data+0.1),
         outline = FALSE,
         col = colors36,
         horizontal = TRUE,
         las = 2,
         main = "Distrubution of count values",
-        cex.axis= 0.4)
+        cex.axis= 0.6)
 ```
 
 ```{r densityplot}
