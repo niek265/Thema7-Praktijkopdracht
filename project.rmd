@@ -1,36 +1,44 @@
 ---
 title: "Analysis of Gene Expression"
-subtitle: "Transcriptional signature of prion-induced neurotoxicity in a Drosophila model of transmissible mammalian prion disease"
+subtitle: "Transcriptional signature of prion-induced neurotoxicity in a Drosophila model of transmissible mammalian prion disease."
 author: Niek Scholten
 date: "`r Sys.Date()`"
 output: pdf_document
 ---
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
+
+[//]: # (Page 1)
+\thispagestyle{empty}
+
+\vspace{100pt}
 \begin{center}
     \includegraphics[width=5in,height=5in]{drosophila.jpg}\LARGE\\
 \end{center}
+\setcounter{secnumdepth}{2}
+
+[//]: # (Page 2)
 \newpage
 
+
+\clearpage
+\setcounter{page}{1}
+
+\tableofcontents
+
+[//]: # (Page 3)
+\newpage
+
+
+# Setup
 ```{r setup, echo = T, results = 'hide', message = F, warning = F}
 # Options for all chunks
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(cache = TRUE)
 
 # Load the packages & register the amount of workers
-packages <- c("affy", "scales", "DESeq2", "BiocParallel", "pheatmap", "PoiClaClu", "ggplot2", "knitr", "pander")
+packages <- c("affy", "scales", "DESeq2", "BiocParallel",
+              "pheatmap", "PoiClaClu", "ggplot2", "knitr", "pander")
 invisible(lapply(packages, library, character.only = TRUE))
 register(MulticoreParam(12))
-
-setwd("/home/nieks/PycharmProjects/Bio-Informatica-Hanze/Thema 07 - Analyse van Genexpressie/Praktijkopdracht")
 
 # Load the data into a data frame
 data <- read.table("Data/GSE144028.txt")
@@ -54,15 +62,44 @@ groups <- factor(rep(1:12, each=3),
 # Set color distributions for the graphs
 colors12 <- hue_pal()(12)
 colors36 <- rep(colors12, each=3)
-#
-#
-#
 ```
 This is the setup of the project. It loads all the necessary packages and sets values that are important for later.
 
-```{r boxplot, fig.width = 10, fig.height = 8}
+[//]: # (Page 4)
+\newpage
+
+# Initial analysis
+The initial analysis includes a summary of the data and a quick look at the visualisation of this data in a boxplot.
+
+## Summary
+```{r}
+sumMatrix <- summary(data)
+sumFrame <- data.frame()
+sumGroups <- split(sumMatrix, ceiling(seq_along(sumMatrix)/6))
+sumGroups <- lapply(sumGroups, function (i) {
+  for (j in i){
+      as.numeric(
+        strsplit(j, ":")[[1]][1][2])
+                }
+            }
+       )
+# for (sumGroup in sumGroups) {
+#     sumFrame <- rbind(sumFrame, as.numeric(strsplit(sumGroup, ":")[[1]][2]))
+# }
+
+
+# Disable intertable text
 panderOptions('table.continues', '')
+# Pretty print the output of the data summary
 pander(summary(data), split.tables = 64)
+```
+[//]: # (Page 5)
+\newpage
+
+
+## Boxplot
+```{r boxplot, fig.width = 10, fig.height = 8}
+# Create a boxplot for initial analysis
 boxplot(log2(data+0.1),
         outline = FALSE,
         col = colors36,
