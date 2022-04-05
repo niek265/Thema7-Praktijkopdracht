@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 output: pdf_document
 ---
 
-[//]: # (Page 1)
+<!-- Page 1 -->
 \thispagestyle{empty}
 
 \vspace{100pt}
@@ -15,7 +15,7 @@ output: pdf_document
 \end{center}
 \setcounter{secnumdepth}{2}
 
-[//]: # (Page 2)
+<!-- Page 2 -->
 \newpage
 
 
@@ -24,7 +24,7 @@ output: pdf_document
 
 \tableofcontents
 
-[//]: # (Page 3)
+<!-- Page 3 -->
 \newpage
 
 
@@ -65,7 +65,7 @@ colors36 <- rep(colors12, each=3)
 ```
 This is the setup of the project. It loads all the necessary packages and sets values that are important for later.
 
-[//]: # (Page 4)
+<!-- Page 4 -->
 \newpage
 
 # Initial analysis
@@ -73,27 +73,12 @@ The initial analysis includes a summary of the data and a quick look at the visu
 
 ## Summary
 ```{r}
-sumMatrix <- summary(data)
-sumFrame <- data.frame()
-sumGroups <- split(sumMatrix, ceiling(seq_along(sumMatrix)/6))
-sumGroups <- lapply(sumGroups, function (i) {
-  for (j in i){
-      as.numeric(
-        strsplit(j, ":")[[1]][1][2])
-                }
-            }
-       )
-# for (sumGroup in sumGroups) {
-#     sumFrame <- rbind(sumFrame, as.numeric(strsplit(sumGroup, ":")[[1]][2]))
-# }
-
-
 # Disable intertable text
 panderOptions('table.continues', '')
 # Pretty print the output of the data summary
 pander(summary(data), split.tables = 64)
 ```
-[//]: # (Page 5)
+<!-- Page 5 -->
 \newpage
 
 
