@@ -283,9 +283,10 @@ resultsNames(dds)
 shrunk <- lfcShrink(dds, coef = "species_PrP_GPI_vs_X51D", res = res,
                      type = "apeglm")
 
- EnhancedVolcano(shrunk,
-    lab = rownames(shrunk),
-    x = 'log2FoldChange',
-    y = 'pvalue')
+EnhancedVolcano(shrunk,
+   lab = rownames(shrunk),
+   x = 'log2FoldChange',
+   y = 'pvalue',
+   FCcutoff = 5)
 
 ```
